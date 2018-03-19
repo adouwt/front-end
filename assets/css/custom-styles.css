@@ -1,0 +1,165 @@
+.in .modal-dialog.ticket-modal {
+  transform: translateY(50%)
+}
+.index-body {
+  background: url('/sys-img/cinema-bg.png') no-repeat center center;
+  background-size: cover;
+}
+body{
+  margin: auto;
+}
+.show-login {
+  display: block !important;
+  background-color: rgba(0,0,0,0.5);
+}
+section.index {
+  color: #fff;
+}
+.ticket-size-lg {
+  font-size: 24px;
+}
+.ticket-verticl {
+  vertical-align: middle;
+}
+.form-control.ticket-inline{
+  width: 40%;
+  display: inline-block;
+}
+.ticket-footer {
+  position: absolute;
+  bottom: 0;
+}
+.ticket-mt-md {
+  margin-top: 20px;
+}
+.ticket-mt-sm {
+  margin-top: 10px;
+}
+.err-msg {
+  display: none;
+}
+.err-msg.err-fadeIn {
+  display: block;
+}
+.err-border {
+  border-color: red;
+}
+.ticket-canceled-data {
+  margin-top: 50%;
+}
+.ticket-empty-line {
+  height: 20px;
+}
+.empty-seat.form-control {
+  /* width: 30%; */
+}
+
+/* select-page  */
+.ticket-disable.disabled {
+  background-color: #aaa;
+  color: #aaa
+}
+.blue {
+  display: inline-block;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+}
+.blue button {
+  background-color: green;
+  color: #fff;
+}
+.grey{
+  background-color: #ddd;
+  padding: 5px;
+}
+.movie-seat-select-table {
+  white-space: nowrap;
+  margin: auto;
+}
+.cinema-name {
+  background-color:rgb(160, 44, 44);
+  font-size: 28px;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+  color: #fff;
+}
+.movie-name-title {
+  font-size: 20px;
+  color: #333;
+  display: inline-block;
+  padding-left: 20px;
+}
+.movie-price {
+  color: rgb(165, 165, 11);
+  font-size: 24px;
+  margin-left: 20px;
+  display: inline-block;
+}
+.movie-address {
+  padding-left: 20px;
+  color: green;
+  font-size: 18px;
+}
+.movie-time {
+  font-size: 16px;
+  padding-left: 20px;
+}
+.movie-seat {
+  max-width: 100%;
+  overflow: auto;
+}
+.movie-seat-screem {
+  height: 20px;
+  line-height: 20px;
+  margin: 10px 30px;
+  background-color: #ddd;
+  border-radius: 5px;
+}
+.movie-notice {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+button.ticket-disable{
+  background-color: red;
+}
+.movie-seat-status span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+.movie-seat-status b {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: top;
+}
+.movie-seat-status-ordered {
+  background-color: #ddd;
+}
+.movie-seat-status-ordering {
+  background-color:red;
+}
+.movie-seat-empty {
+  background-color: green;
+}
+
+.empty-disable.disabled {
+  background-color: #fff;
+}
+
+/* css 标注序列号 问题：占据文档流 位置不好控制 */
+/* table{
+  counter-reset:section;
+}
+.movie-seat-select-table tr:before{
+  content:counter(section);
+  counter-increment:section;
+} */
+
+.ticket-table-order {
+  background-color: #ddd;
+  text-align: center;
+}

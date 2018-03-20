@@ -1,6 +1,6 @@
-var ds = require("../model/datastruct.js").ds;
-var detailrouter = require("../model/datastruct.js").detailrouter;
-var db = require("../model/db.js");
+var ds = require("./datastruct.js").ds;
+var detailrouter = require("./datastruct.js").detailrouter;
+var db = require("./db.js");
 var mongo = require('mongodb');
 var ob = mongo.ObjectID;
 function getLoginUser(req, cb){

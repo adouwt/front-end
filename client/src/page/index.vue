@@ -73,7 +73,8 @@
       }
     },
     created () {
-      this.getDoubanTopMovie()
+      this.getDoubanTopMovie();
+      this.getHello()
     },
     methods: {
       getDoubanTopMovie () {
@@ -82,6 +83,14 @@
           // console.log(succ, 'suc');
           var number = Math.floor(Math.random() * (40 - 1) + 1);
           this.movieArr = succ.body.entries.splice(number, 5)
+        }, err => {
+          console.log(err, 'err')
+        })
+      },
+      getHello () {
+        this.$http.get('http://127.0.0.1:8008/api/essayNote')
+        .then(succ => {
+          console.log('success', succ)
         }, err => {
           console.log(err, 'err')
         })

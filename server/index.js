@@ -1,8 +1,6 @@
 var express = require("express");
 var app = express();
 var path = require("path");
-var router = require("./router/router.js");
-var routerSearch = require("./router/search.js");
 var formidable = require("formidable");
 
 // var router = require("./router/router.js");
@@ -46,33 +44,23 @@ app.set("view engine","ejs");
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static("./assets"));
 
-app.get("/",router.index);
+// 挂载主站页面路由
+app.use(require('./routers/indexApiRouter.js'));
+app.use(require('./routers/essayApiRouter.js'));
+app.use(require('./routers/loginApiRouter.js'));
+app.use(require('./routers/registApiRouter.js'));
+// app.use(require('./routers/plantformIndexApiRouter.js'));
 
-//我的发布
-// app.get("/mypost", routerUser.list);
-//search
-// app.get("/search",routerSearch.list);
 
-//执行登陆业务
-app.post("/doLogin",router.doLogin);
+// 生成404错误
+app.use(function gen404Error(req, res, next) {
+  var err = new error('EClientNotFound', 'routerNotFound', {
+    method: req.method,
+    url   : req.originalUrl
+  });
 
-//生成电影院相关数据接口
-app.post("/doCinemaSubmit",router.doCinemaSubmit);
-
-//个人中心页
-// app.get("/usercenter",router.showUserCenter);
-
-app.get("/cinema/:targetId/ticket",router.showSelectPage);
-
-app.post('/seatHandle', router.seatHandle)
-//退出
-app.get("/user_exit",router.logout);
-
-//提交修改密码
-app.post("/reviseMyMsg",router.reviseMyMsg);
-//test
-app.get("/hello",router.hello);
-
+  next(err);
+});
 
 app.listen(config.port, function () {
 	console.log("项目启动成功: " + config.port);

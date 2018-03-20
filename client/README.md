@@ -1,6 +1,6 @@
-# ticket-client
+# 202blog-client
 
-> 分离的前端订票操作
+> 分离的博客系统
 
 ## Build Setup
 

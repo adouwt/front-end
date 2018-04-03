@@ -1,0 +1,30 @@
+# Mac 系统文件
+.DS_Store
+
+# Vim 临时文件
+*.swp
+
+# NPM 相关文件
+front-end/client/node_modules/
+front-end/server/node_modules/
+npm-debug.log
+
+# Redis dump文件
+dump.rdb
+
+# 内存堆快照
+*.heapsnapshot
+
+# 证书文件
+*.pem
+!dev-key.pem
+!dev-crt.pem
+
+# 各类日志
+*.log
+
+# robots.txt文件
+robots.txt
+
+#VScode配置文件
+.vscode

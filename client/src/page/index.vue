@@ -88,9 +88,10 @@
         })
       },
       getHello () {
-        this.$http.get('http://127.0.0.1:8008/api/essayNote')
+        // this.$http.get('http://127.0.0.1:8008/api/essayNote')
+        this.$http.get('http://127.0.0.1:8009/api/apiturntest')
         .then(succ => {
-          console.log('success', succ)
+          console.log(succ.data)
         }, err => {
           console.log(err, 'err')
         })

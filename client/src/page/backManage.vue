@@ -96,7 +96,6 @@
             }, err => {
               console.log(err, 'err')
             })
-            
             axios.get('http://127.0.0.1:8000/hello', {
             })
             .then(succ => {

@@ -17,6 +17,7 @@ html{
 }
 body {
   font-size: 1.4rem;
+  overflow: hidden;
 }
 .text-center {
   text-align: center;
@@ -34,17 +35,15 @@ a {
 .text-left {
   text-align: left;
 }
-.ticket-manage-return {
-  float: left;
-  font-weight: bold;
-  font-size: 1.6rem;
+.blog-width-full {
+  width: 100%;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin: 20px auto;
-  width: 95%;
+  width: 100%;
+  height: 100vh;
 }
 </style>

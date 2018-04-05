@@ -1,50 +1,67 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/page/index'
-import backManage from '@/page/backManage'
-import cinemaData from '@/page/cinemaData'
-import countRecord from '@/page/countRecord'
-import deleteData from '@/page/deleteData'
+import loginRegist from '@/page/login-regist'
 
-import ticket from '@/page/ticket'
+import blogDraft from '@/page/blog-draft'
+import blogNote from '@/page/blog-note'
+import userCenter from '@/page/user-center'
+
+import article from '@/page/common-catagory-article'
+import articleList from '@/page/catagory-article-list'
+import errorPage from '@/page/error'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/manage',
-      name: 'backManage',
-      component: backManage
-    },
-    {
-      path: '/cinemadata',
-      name: 'cinemaData',
-      component: cinemaData
-    },
-    {
-      path: '/countrecord',
-      name: 'countRecord',
-      component: countRecord
-    },
-    {
-      path: '/deleteData',
-      name: 'deleteData',
-      component: deleteData
-    },
-    {
       path: '/index',
       name: 'index',
       component: index
     },
     {
-      path: '/',
-      component: index
+      path: '/login-regist',
+      name: 'loginRegist',
+      component: loginRegist
     },
     {
-      path: '/cinema/:id/ticket',
-      name: 'ticket',
-      component: ticket
+      path: '/draft/:userId',
+      name: 'blogDraft',
+      component: blogDraft
+    },
+    {
+      path: '/catagory-article/:articleId',
+      name: 'article',
+      component: article
+    },
+    {
+      path: '/catagory-article-list/:catagoryId',
+      name: 'articleList',
+      component: articleList
+    },
+    {
+      path: '/blog-note',
+      name: 'blogNote',
+      component: blogNote
+    },
+    {
+      path: '/user-center',
+      name: 'userCenter',
+      component: userCenter
+    },
+    {
+      path: '/error',
+      name: 'errorPage',
+      component: errorPage
+    },
+    {
+      path: '*',
+      redirect: '/error'
+    },
+    {
+      path: '/',
+      redirect: '/index'
     }
   ]
 })

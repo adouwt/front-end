@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-aside width="200px">
+    <el-aside width="150px">
       <el-menu :default-active="activeIndex" class="el-menu-demo">
         <el-menu-item index="0">首页</el-menu-item>
         <el-menu-item index="1">处理中心</el-menu-item>

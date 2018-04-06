@@ -3,24 +3,39 @@
     <el-header>
       <div>
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-          <el-menu-item index="1">处理中心</el-menu-item>
-          <el-submenu index="2">
-            <template slot="title">我的工作台</template>
-            <el-menu-item index="2-1">选项1</el-menu-item>
-            <el-menu-item index="2-2">选项2</el-menu-item>
-            <el-menu-item index="2-3">选项3</el-menu-item>
+          <el-menu-item index="9" class="blog-logo" >
+            <router-link to="/index">logo</router-link>
+          </el-menu-item>
+          <el-submenu index="1">
+            <template slot="title">前端</template>
+            <el-menu-item index="1-1">html</el-menu-item>
+            <el-menu-item index="1-2">css</el-menu-item>
+            <el-menu-item index="1-3">javascript</el-menu-item>
+            <el-menu-item index="1-4">vuejs</el-menu-item>
+            <el-menu-item index="1-5">reactjs</el-menu-item>
+            <el-menu-item index="1-6">angularjs</el-menu-item>
           </el-submenu>
-          <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
-          <el-menu-item index="5" class="blog-header-login" v-if="login">
+          <el-submenu index="3">
+            <template slot="title">硬件</template>
+            <el-menu-item index="2-1">单片机</el-menu-item>
+            <el-menu-item index="2-2">电路设计</el-menu-item>
+            <el-menu-item index="2-3">信号处理</el-menu-item>
+          </el-submenu>
+          <el-submenu index="4">
+            <template slot="title">散文诗集</template>
+            <el-menu-item index="3-1">散文</el-menu-item>
+            <el-menu-item index="3-2">微信推广</el-menu-item>
+          </el-submenu>
+          <el-menu-item index="90" class="blog-header-login" v-if="login">
             <el-button type="primary" round @click="blogLogin">登录/注册</el-button>
           </el-menu-item>
-          <el-menu-item index="6" class="blog-header-login" v-else>
+          <el-menu-item index="91" class="blog-header-login" v-else>
             <span>202 登录</span>
           </el-menu-item>
           <el-menu-item index="7" class="blog-header-login">
             <el-button type="success" round @click="blogNote">写博客</el-button>
           </el-menu-item>
-          <el-menu-item index="4"  class="blog-header-login">
+          <el-menu-item index="8"  class="blog-header-login">
             <el-input
               placeholder="请输入内容"
               prefix-icon="el-icon-search"
@@ -43,14 +58,14 @@ export default {
       login: true,
       input21: '',
       form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
+        name: '',
+        region: '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: ''
         }
     };
   },
@@ -74,5 +89,12 @@ export default {
 <style lang="less" scoped>
   .blog-header-login {
     float: right;
+  }
+  .blog-logo {
+    width: 9.5%;
+    border-bottom: none;
+  }
+  .blog-logo.is-active ,.blog-header-login.is-active{
+    border-bottom:none;
   }
 </style>

@@ -46,4 +46,7 @@ a {
   width: 100%;
   height: 100vh;
 }
+.el-aside {
+  border-top: 2px solid #ddd;
+}
 </style>

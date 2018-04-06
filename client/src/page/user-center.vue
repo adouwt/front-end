@@ -5,7 +5,7 @@
         <v-header></v-header>
       </div>
       <el-container class="blog-wrapper">
-        <el-aside width="200px">
+        <el-aside width="150px">
           <left-side></left-side>
         </el-aside>
         <el-container>

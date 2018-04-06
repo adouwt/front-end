@@ -38,6 +38,9 @@ a {
 .blog-width-full {
   width: 100%;
 }
+.blog-common-ml-sm {
+  margin-left: 10px;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -48,5 +51,8 @@ a {
 }
 .el-aside {
   border-top: 2px solid #ddd;
+}
+.el-main {
+  text-align: left;
 }
 </style>

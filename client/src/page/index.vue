@@ -10,64 +10,29 @@
         </el-aside>
         <el-container>
           <el-main>
-            <v-main></v-main>
+            <div>
+              <el-carousel :interval="4000" type="card" height="200px">
+                <el-carousel-item v-for="item in 6" :key="item">
+                  <h3>{{ item }}</h3>
+                </el-carousel-item>
+              </el-carousel>
+            </div>      
+            <blog-list></blog-list>     
           </el-main>
-          <el-footer>
-            <v-footer></v-footer>
-          </el-footer>
         </el-container>
         <el-aside width="300px">
           <right-side></right-side>
         </el-aside>
       </el-container>
     </el-container>
+    <!-- <el-container class="blog-index-footer">
+      <el-footer>
+        <v-footer></v-footer>
+      </el-footer>
+    </el-container> -->
   </div>
 </template>
 
-<style lang="less">
-  .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-  
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    // line-height: 200px;
-  }
-  
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    // line-height: 160px;
-  }
-  
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-  
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    // line-height: 260px;
-  }
-  
-  .el-container:nth-child(7) .el-aside {
-    // line-height: 320px;
-  }
-
-  .blog-wrapper.el-container {
-    // min-height: calc(100vh - 60px); 此方法不知道为什么没有作用
-    position: absolute;
-    left: 0;
-    right:0;
-    bottom: 0;
-    top: 60px;
-  }
-</style>
 
 <script>
 import vHeader from '@/components/common-header';
@@ -75,6 +40,7 @@ import leftSide from '@/components/common-left';
 import rightSide from '@/components/common-right';
 import vMain from '@/components/common-main';
 import vFooter from '@/components/common-footer';
+import blogList from '@/components/blog-list'
 
 export default {
   components: {
@@ -82,6 +48,7 @@ export default {
     leftSide,
     rightSide,
     vMain,
+    blogList,
     vFooter
   },
   data () {
@@ -112,4 +79,53 @@ export default {
 }
 </script>
 
+<style lang="less">
+  .el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+  // .blog-index-footer {
+  //   position: absolute;
+  //   left: 0;
+  //   top: 100%;
+  //   right: 0;
+  //   bottom: 0;
+  // }
+  .el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+  }
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+  }
+  body > .el-container {
+    margin-bottom: 40px;
+  }
+  .blog-wrapper.el-container {
+    // min-height: calc(100vh - 60px); 此方法不知道为什么没有作用
+    position: absolute;
+    left: 0;
+    right:0;
+    bottom: 0;
+    top: 60px;
+  }
+  .el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+  }
+  .el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+  }
+  .el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+  }
+  
+</style>
 

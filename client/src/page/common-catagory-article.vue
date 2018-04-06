@@ -10,7 +10,6 @@
         </el-aside>
         <el-container>
           <el-main>
-            <div> this is a 分类文章页面</div>
             <v-main></v-main>
           </el-main>
           <el-footer>
@@ -86,7 +85,6 @@ export default {
   .el-main {
     background-color: #E9EEF3;
     color: #333;
-    text-align: center;
     // line-height: 160px;
   }
   

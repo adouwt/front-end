@@ -8,7 +8,9 @@
           </el-menu-item>
           <el-submenu index="1">
             <template slot="title">前端</template>
-            <el-menu-item index="1-1">html</el-menu-item>
+            <el-menu-item index="1-1" index-id="catagoryId">
+              <router-link to="/catagory-article-list/12w3e4r5t6y">html</router-link>
+            </el-menu-item>
             <el-menu-item index="1-2">css</el-menu-item>
             <el-menu-item index="1-3">javascript</el-menu-item>
             <el-menu-item index="1-4">vuejs</el-menu-item>
@@ -57,6 +59,7 @@ export default {
       activeIndex: '1',
       login: true,
       input21: '',
+      catagoryId: '2345t6y78u',
       form: {
         name: '',
         region: '',

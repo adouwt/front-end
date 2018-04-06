@@ -11,11 +11,8 @@
         <el-container>
           <el-main>
             <div>this is a article-list page!</div>
-            <v-main></v-main>
+            <blog-list></blog-list>  
           </el-main>
-          <el-footer>
-            <v-footer></v-footer>
-          </el-footer>
         </el-container>
         <el-aside width="300px">
           <right-side></right-side>
@@ -31,6 +28,7 @@ import leftSide from '@/components/common-left';
 import rightSide from '@/components/common-right';
 import vMain from '@/components/common-main';
 import vFooter from '@/components/common-footer';
+import blogList from '@/components/blog-list'
 
 export default {
   components: {
@@ -38,6 +36,7 @@ export default {
     leftSide,
     rightSide,
     vMain,
+    blogList,
     vFooter
   },
   data () {
@@ -80,14 +79,11 @@ export default {
     background-color: #D3DCE6;
     color: #333;
     text-align: center;
-    // line-height: 200px;
   }
   
   .el-main {
     background-color: #E9EEF3;
     color: #333;
-    text-align: center;
-    // line-height: 160px;
   }
   
   body > .el-container {

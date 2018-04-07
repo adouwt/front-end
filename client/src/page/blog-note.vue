@@ -225,14 +225,14 @@ export default {
       const h = this.$createElement;
       this.$notify({
         title: '发布成功',
-        message: h('i', { style: 'color: teal'}, '博客发布成功，请前往首页查看')
+        message: h('i', {style: 'color: teal'}, '博客发布成功，请前往首页查看')
       });
     },
     saveDraft () {
       const save = this.$createElement;
       this.$notify({
         title: '保存成功',
-        message: save('i', { style: 'color: teal'}, '草稿保存成功，请前往个人中心页面查看')
+        message: save('i', {style: 'color: teal'}, '草稿保存成功，请前往个人中心页面查看')
       });
     }
   }

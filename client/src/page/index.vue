@@ -80,39 +80,6 @@ export default {
 </script>
 
 <style lang="less">
-  .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-  // .blog-index-footer {
-  //   position: absolute;
-  //   left: 0;
-  //   top: 100%;
-  //   right: 0;
-  //   bottom: 0;
-  // }
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-  }
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-  }
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-  .blog-wrapper.el-container {
-    // min-height: calc(100vh - 60px); 此方法不知道为什么没有作用
-    position: absolute;
-    left: 0;
-    right:0;
-    bottom: 0;
-    top: 60px;
-  }
   .el-carousel__item h3 {
     color: #475669;
     font-size: 14px;

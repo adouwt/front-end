@@ -32,7 +32,9 @@
             <el-button type="primary" round @click="blogLogin">登录/注册</el-button>
           </el-menu-item>
           <el-menu-item index="91" class="blog-header-login" v-else>
-            <span>202 登录</span>
+            <router-link to="/user-center">
+              202 登录
+            </router-link>
           </el-menu-item>
           <el-menu-item index="7" class="blog-header-login">
             <el-button type="success" round @click="blogNote">写博客</el-button>
@@ -57,7 +59,7 @@ export default {
   data () {
     return {
       activeIndex: '1',
-      login: true,
+      login: false,
       input21: '',
       catagoryId: '2345t6y78u',
       form: {
@@ -80,10 +82,11 @@ export default {
       console.log('submit!');
     },
     blogLogin () {
-      router.push({ path: 'login-regist' })
+      router.push({ path: '/login-regist' })
+      // router.push({ path: 'login-regist' }) // 如果这样写的话，会寻找路由最近的 / 然后在后面直接拼接login-regist 
     },
     blogNote () {
-      router.push({ path: 'blog-note' })
+      router.push({ path: '/blog-note' })
     }
   }
 }

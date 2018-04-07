@@ -10,8 +10,39 @@
         </el-aside>
         <el-container>
           <el-main>
-            <div>this is a login and regist page!</div>
-            <v-main></v-main>
+            <div class="blog-login-regist-wrapper">
+              <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+                <el-tab-pane label="登录" name="first">
+                  <el-form :model="ruleLogin" status-icon :rules="loginRule" ref="ruleLogin" label-width="60px" class="demo-ruleForm">
+                    <el-form-item label="用户名" prop="username">
+                      <el-input type="text" v-model="ruleLogin.username" auto-complete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" prop="pwd">
+                      <el-input type="password" v-model="ruleLogin.pwd" auto-complete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                      <el-button type="primary" size="small" @click="submitForm('ruleLogin')">提交</el-button>
+                    </el-form-item>
+                  </el-form>
+                </el-tab-pane>
+                <el-tab-pane label="注册" name="second">
+                  <el-form :model="ruleRegist" status-icon :rules="registRule" ref="ruleRegist" label-width="60px" class="demo-ruleForm">
+                    <el-form-item label="用户名" prop="username">
+                      <el-input type="text" v-model="ruleRegist.username" auto-complete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" prop="pwd">
+                      <el-input type="password" v-model="ruleRegist.pwd" auto-complete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="注册码" prop="blogCode">
+                      <el-input type="password" v-model="ruleRegist.blogCode" auto-complete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                      <el-button type="primary" size="small" @click="submitForm('ruleRegist')">提交</el-button>
+                    </el-form-item>
+                  </el-form>
+                </el-tab-pane>
+              </el-tabs>
+            </div>
           </el-main>
           <el-footer>
             <v-footer></v-footer>
@@ -38,65 +69,94 @@ export default {
     vFooter
   },
   data () {
-    return {
-      activeIndex: '1',
-      activeIndex2: '1',
-      input21: '',
-      form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
+    var validateUsername = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入用户名'));
+      } else {
+        if (this.ruleLogin.username !== '') {
+          // console.log(this.$refs.ruleLogin,'123')
+          // this.$refs.ruleLogin.validate('username'); // 此检验方法有问题 
         }
+        callback();
+      }
+    };
+    var validatePwd = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'));
+      } else {
+        if (this.ruleLogin.pwd !== '') {
+          // this.$refs.ruleLogin.validateField('pwd');
+        }
+        callback();
+      }
+    };
+     var validateBlogCode = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入注册码'));
+      } else {
+        if (this.ruleRegist.blogCode !== '') {
+          // this.$refs.ruleLogin.validateField('blogCode');
+        }
+        callback();
+      }
+    };
+    return {
+      activeName: 'first',
+      ruleLogin: {
+        username: '',
+        pwd: ''
+      },
+      loginRule: {
+        username: [
+          { validator: validateUsername, trigger: 'blur' }
+        ],
+        pwd: [
+          { validator: validatePwd, trigger: 'blur' }
+        ]
+      },
+      ruleRegist: {
+        username: '',
+        pwd: '',
+        blogCode: ''
+      },
+      registRule: {
+        username: [
+          { validator: validateUsername, trigger: 'blur' }
+        ],
+        pwd: [
+          { validator: validatePwd, trigger: 'blur' }
+        ],
+        blogCode: [
+          { validator: validateBlogCode, trigger: 'blur' }
+        ]
+      }
     };
   },
   methods: {
-    handleSelect (key, keyPath) {
-      console.log(key, keyPath);
+    handleClick (tab, event) {
+      console.log(tab, event);
     },
-    onSubmit () {
-      console.log('submit!');
+    submitForm (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!');
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
     }
   }
 }
 </script>
 
-<style lang="less">
-  .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-  
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    // line-height: 200px;
-  }
-  
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    // line-height: 160px;
-  }
-  
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-
-  .blog-wrapper.el-container {
-    // min-height: calc(100vh - 60px); 此方法不知道为什么没有作用
-    position: absolute;
-    left: 0;
-    right:0;
-    bottom: 0;
-    top: 60px;
+<style lang="less" scoped>
+  .blog-login-regist-wrapper {
+    width: 300px;
+    min-height:300px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 10px  20px; 
+    background-color: #fff;
   }
 </style>

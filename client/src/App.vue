@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 html{
   font-size: 62.5%;
   font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
@@ -41,6 +41,9 @@ a {
 .blog-common-ml-sm {
   margin-left: 10px;
 }
+.blog-pull-right {
+  float: right;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -55,4 +58,34 @@ a {
 .el-main {
   text-align: left;
 }
+.el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+  
+  .el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+  }
+  
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+  }
+  
+  body > .el-container {
+    margin-bottom: 40px;
+  }
+
+  .blog-wrapper.el-container {
+    // min-height: calc(100vh - 60px); 此方法不知道为什么没有作用
+    position: absolute;
+    left: 0;
+    right:0;
+    bottom: 0;
+    top: 60px;
+  }
 </style>

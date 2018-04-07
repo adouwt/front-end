@@ -16,9 +16,11 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.0.5",
+    "font-awesome": "^4.7.0",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "vue": "^2.5.2",
+    "vue-html5-editor": "^1.1.1",
     "vue-router": "^3.0.1",
     "vue-ydui": "^1.1.1"
   },

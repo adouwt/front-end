@@ -6,6 +6,25 @@
 
 <script>
 import router from '@/router/router.js';
+
+router.beforeEach((to, from, next) => {
+  // 模拟登陆状态
+  let isAdmin = true;
+  let hasAdminRouter = window.location.href.includes('/wtadmin')
+  if (hasAdminRouter && !isAdmin) {
+    if (to.path !== '/wtadmin') {
+      return next({path: '/wtadmin'});
+    } else {
+      next();
+    }
+  } else {
+    if (to.path === '/wtadmin') {
+      return next({path: '/'});
+    }
+    next();
+  }
+});
+
 export default {
   name: 'app',
   data () {
@@ -16,12 +35,12 @@ export default {
   computed: {
 
   },
-  watch: {
-    '$route': 'judegAdmin' // 路由变化重新调用方法 判断是否是admin
-  },
+  // watch: {
+  //   '$route': 'judegAdmin' // 路由变化重新调用方法 判断是否是admin
+  // },
   methods: {
     judegAdmin () {
-      const hasAdminRouter = window.location.href.includes('/wtadmin')
+      let hasAdminRouter = window.location.href.includes('/wtadmin')
       if (hasAdminRouter && !this.isadmin) {
         router.push({ path: '/error' })
       }

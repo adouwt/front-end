@@ -26,3 +26,32 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+
+// function filter (fullPath, user) {
+
+// }
+// let user = sessionStorage.getItem('user');
+// if (user) {
+//     user = JSON.parse(user);
+//     // 筛选得到实际路由
+//     let fullPath = require('./router/router.js');
+//     let routes = filter(fullPath, user.menus);
+//     // 创建路由对象
+//     let router = new Router({routes});
+//     // 生成Vue实例
+//     new Vue({
+//       el: '#app',
+//       router,
+//       template: '<App/>',
+//       components: { App }
+//     })
+// } else {
+//     new Vue({
+//       el: '#app',
+//       Router,
+//       template: '<App/>',
+//       components: { App }
+//     })
+//     location.href = '/index';
+// }

@@ -55,23 +55,32 @@
 
 <script>
 import router from '@/router/router.js';
+
+// router.beforeEach((to, from, next) => {
+//   // 模拟登陆状态
+//   let isAdmin = true;
+//   let hasAdminRouter = window.location.href.includes('/wtadmin')
+//   if (hasAdminRouter && !isAdmin) {
+//     if (to.path !== '/wtadmin') {
+//       return next({path: '/wtadmin'});
+//     } else {
+//       next();
+//     }
+//   } else {
+//     if (to.path === '/wtadmin') {
+//       return next({path: '/'});
+//     }
+//     next();
+//   }
+// });
+
 export default {
   data () {
     return {
       activeIndex: '1',
       login: false,
       input21: '',
-      catagoryId: '2345t6y78u',
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-        }
+      catagoryId: '2345t6y78u'
     };
   },
   methods: {

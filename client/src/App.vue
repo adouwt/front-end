@@ -5,8 +5,28 @@
 </template>
 
 <script>
+import router from '@/router/router.js';
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      isadmin: false
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+    '$route': 'judegAdmin' // 路由变化重新调用方法 判断是否是admin
+  },
+  methods: {
+    judegAdmin () {
+      const hasAdminRouter = window.location.href.includes('/wtadmin')
+      if (hasAdminRouter && !this.isadmin) {
+        router.push({ path: '/error' })
+      }
+    }
+  }
 }
 </script>
 
@@ -59,33 +79,33 @@ a {
   text-align: left;
 }
 .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-  
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-  }
-  
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-  }
-  
-  body > .el-container {
-    margin-bottom: 40px;
-  }
+  background-color: #B3C0D1;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+}
 
-  .blog-wrapper.el-container {
-    // min-height: calc(100vh - 60px); 此方法不知道为什么没有作用
-    position: absolute;
-    left: 0;
-    right:0;
-    bottom: 0;
-    top: 60px;
-  }
+.el-aside {
+  background-color: #D3DCE6;
+  color: #333;
+  text-align: center;
+}
+
+.el-main {
+  background-color: #E9EEF3;
+  color: #333;
+}
+
+body > .el-container {
+  margin-bottom: 40px;
+}
+
+.blog-wrapper.el-container {
+  // min-height: calc(100vh - 60px); 此方法不知道为什么没有作用
+  position: absolute;
+  left: 0;
+  right:0;
+  bottom: 0;
+  top: 60px;
+}
 </style>

@@ -9,6 +9,7 @@ import userCenter from '@/page/user-center'
 
 import article from '@/page/common-catagory-article'
 import articleList from '@/page/catagory-article-list'
+import wtAdmin from '@/page/admin'
 import errorPage from '@/page/error'
 
 Vue.use(Router)
@@ -49,6 +50,11 @@ export default new Router({
       path: '/user-center',
       name: 'userCenter',
       component: userCenter
+    },
+    {
+      path: '/wtadmin',
+      name: 'wtAdmin',
+      component: wtAdmin
     },
     {
       path: '/error',

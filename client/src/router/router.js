@@ -1,3 +1,4 @@
+// import 相关组件
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/page/index'
@@ -12,12 +13,21 @@ import articleList from '@/page/catagory-article-list'
 import wtAdmin from '@/page/admin'
 import errorPage from '@/page/error'
 
+// import 登录权限组件
+import {isLogin} from '../utils/authService'
+
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
+  // mode: 'history',
   routes: [
     {
       path: '/index',
+      name: 'index',
+      component: index
+    },
+    {
+      path: '/',
       name: 'index',
       component: index
     },
@@ -44,7 +54,10 @@ export default new Router({
     {
       path: '/blog-note',
       name: 'blogNote',
-      component: blogNote
+      component: blogNote,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/user-center',
@@ -54,7 +67,10 @@ export default new Router({
     {
       path: '/wtadmin',
       name: 'wtAdmin',
-      component: wtAdmin
+      component: wtAdmin,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/error',
@@ -64,10 +80,23 @@ export default new Router({
     {
       path: '*',
       redirect: '/error'
-    },
-    {
-      path: '/',
-      redirect: '/index'
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => { 
+    if (record.meta.requiresAuth) {
+      localStorage.setItem('nexturl', record.path);
+    }
+    return record.meta.requiresAuth 
+    })
+  ) { 
+    if (!isLogin()) {
+      return next({path: '/login-regist'})
+    }
+    next()
+  }
+  next()
+})
+export default router

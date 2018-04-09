@@ -38,7 +38,6 @@
                     </div>
                     <div  class="text item">
                       <div class="blog-user-msg">
-                        <img src="../assets/logo.png" alt="avatar">
                         <div>
                           <el-form :model="ruleModify" status-icon :rules="modifyRule" ref="ruleModify" label-width="60px" class="demo-ruleForm">
                             <el-form-item label="用户名" prop="username">

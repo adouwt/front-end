@@ -57,6 +57,7 @@ html{
 body {
   font-size: 1.4rem;
   overflow: hidden;
+  margin: 0;
 }
 .text-center {
   text-align: center;

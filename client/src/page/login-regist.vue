@@ -21,7 +21,7 @@
                       <el-input type="password" v-model="ruleLogin.pwd" auto-complete="off"></el-input>
                     </el-form-item>
                     <el-form-item>
-                      <el-button type="primary" size="small" @click="submitForm('ruleLogin')">提交</el-button>
+                      <el-button type="primary" size="small" @click="submitLogin('ruleLogin')">提交</el-button>
                     </el-form-item>
                   </el-form>
                 </el-tab-pane>
@@ -60,6 +60,11 @@ import rightSide from '@/components/common-right';
 import vMain from '@/components/common-main';
 import vFooter from '@/components/common-footer';
 
+// import router
+// import router from '../router/router.js'
+
+// import 保存cookies 的方法
+import {saveCookie} from '../utils/authService'
 export default {
   components: {
     vHeader,
@@ -136,10 +141,15 @@ export default {
     handleClick (tab, event) {
       console.log(tab, event);
     },
-    submitForm (formName) {
+    submitLogin (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           alert('submit!');
+          saveCookie('token', 'token msg');
+          let nextUrl = localStorage.getItem('nexturl');
+          console.log(nextUrl);
+          // this.$router.push({'path': nextUrl})
+          location.href = '#' + nextUrl
         } else {
           console.log('error submit!!');
           return false;

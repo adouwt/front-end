@@ -2,12 +2,12 @@
   <div>
     <el-container>
       <div class="blog-width-full">
-        <v-header :blog-title = blogTitle :is-admin = isAdmin></v-header>
+        <v-header :blog-title = blogTitle></v-header>
       </div>
       <el-container class="blog-wrapper">
         <el-container>
           <el-main>
-            <div>this is a admin page!</div>
+            <div>this is a no-authority page!</div>
           </el-main>
           <el-footer>
             <v-footer></v-footer>
@@ -19,7 +19,6 @@
 </template>
 
 <script>
-
 import vHeader from '@/components/common-header';
 import leftSide from '@/components/common-left';
 import rightSide from '@/components/common-right';
@@ -36,13 +35,12 @@ export default {
   },
   data () {
     return {
-      blogTitle: this.$store.state.blogTitle,
-      isAdmin: true
+      blogTitle: ''
     };
   },
   created () {
-    this.$store.commit('changeTitle', '迩伶贰的blog');
-    this.blogTitle = this.$store.state.blogTitle  
+    this.$store.commit('changeTitle', 'no-authority');
+    this.blogTitle = this.$store.state.blogTitle
   },
   methods: {
   }

@@ -2,7 +2,8 @@
   <div>
     <el-container>
       <div class="blog-width-full">
-        <v-header></v-header>
+        <!-- 父组件接受子组件传递过来的方法， 用本组件的一个方法接受这个方法，参数就是传递过来的值 -->
+        <v-header v-on:searchInput="inputValFunc"></v-header> 
       </div>
       <el-container class="blog-wrapper">
         <el-aside width="150px">
@@ -11,6 +12,7 @@
         <el-container>
           <el-main>
             <div>this is a article-list page!</div>
+            <p>{{inputVal}}</p>
             <blog-list></blog-list>  
           </el-main>
         </el-container>
@@ -43,7 +45,7 @@ export default {
     return {
       activeIndex: '1',
       activeIndex2: '1',
-      input21: '',
+      inputVal: '',
       form: {
           name: '',
           region: '',
@@ -62,6 +64,9 @@ export default {
     },
     onSubmit () {
       console.log('submit!');
+    },
+    inputValFunc (val) {
+      this.inputVal = val;
     }
   }
 }

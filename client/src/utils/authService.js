@@ -23,5 +23,14 @@ export function signOut () {
 }
 
 export function isLogin () {
-  return !!cookies.get('token')
+  return !!cookies.get('token') // !! 转成布尔值
+}
+
+// 验证是否是超管
+export function isAdmin () {
+  let isadmin = cookies.get('isadmin') === 'isadmin';
+  console.log(isadmin, 'isadmin')
+  if (isLogin() && isadmin) {
+    return true
+  }
 }

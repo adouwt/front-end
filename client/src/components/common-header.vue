@@ -2,9 +2,9 @@
   <div>
     <el-header>
       <div>
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
           <el-menu-item index="9" class="blog-logo" >
-            <router-link to="/index">logo</router-link>
+            <router-link to="/index">{{blogTitle || '202博客'}}</router-link>
           </el-menu-item>
           <el-submenu index="1">
             <template slot="title">前端</template>
@@ -28,22 +28,28 @@
             <el-menu-item index="3-1">散文</el-menu-item>
             <el-menu-item index="3-2">微信推广</el-menu-item>
           </el-submenu>
-          <el-menu-item index="90" class="blog-header-login" v-if="login">
+          <el-menu-item index="90" class="blog-header-login" v-if="!login">
             <el-button type="primary" round @click="blogLogin">登录/注册</el-button>
           </el-menu-item>
           <el-menu-item index="91" class="blog-header-login" v-else>
             <router-link to="/user-center">
               202 登录
             </router-link>
+            <el-button type="warning" round @click="signout">退出</el-button>
+          </el-menu-item>
+          <el-menu-item index="10" class="blog-header-login" v-if="isAdmin">
+            <router-link to="/wtadmin">
+              超管管理
+            </router-link>
           </el-menu-item>
           <el-menu-item index="7" class="blog-header-login">
             <el-button type="success" round @click="blogNote">写博客</el-button>
           </el-menu-item>
           <el-menu-item index="8"  class="blog-header-login">
-            <el-input
+            <el-input v-on:keyup.enter.native="inputSubmit"
               placeholder="请输入内容"
               prefix-icon="el-icon-search"
-              v-model="input21">
+              v-model="inputVal">
             </el-input>
           </el-menu-item>
         </el-menu>
@@ -55,33 +61,26 @@
 
 <script>
 import router from '@/router/router.js';
-
-// router.beforeEach((to, from, next) => {
-//   // 模拟登陆状态
-//   let isAdmin = true;
-//   let hasAdminRouter = window.location.href.includes('/wtadmin')
-//   if (hasAdminRouter && !isAdmin) {
-//     if (to.path !== '/wtadmin') {
-//       return next({path: '/wtadmin'});
-//     } else {
-//       next();
-//     }
-//   } else {
-//     if (to.path === '/wtadmin') {
-//       return next({path: '/'});
-//     }
-//     next();
-//   }
-// });
+import {getCookie, removeCookie} from '../utils/authService'
 
 export default {
+  props: {
+    blogTitle: {
+      type: String
+    }
+  },
   data () {
     return {
       activeIndex: '1',
-      login: false,
-      input21: '',
-      catagoryId: '2345t6y78u'
+      login: '',
+      inputVal: '',
+      catagoryId: '2345t6y78u',
+      isAdmin: ''
     };
+  },
+  created () {
+    this.isAdmin = getCookie('isadmin'); // 读取 登录时候存取的cookie的超管判断字段
+    this.login = getCookie('token'); // 读取 登录时候存取的cookie的超管判断字段
   },
   methods: {
     handleSelect (key, keyPath) {
@@ -96,6 +95,14 @@ export default {
     },
     blogNote () {
       router.push({ path: '/blog-note' })
+    },
+    inputSubmit () {
+      this.$emit('searchInput', this.inputVal)  // 子组件传值给父组件，通过事件触发
+    },
+    signout () {
+      removeCookie('token');
+      removeCookie('isadmin');
+      router.push({ path: '/index' })
     }
   }
 }

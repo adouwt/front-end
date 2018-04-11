@@ -2,7 +2,7 @@
   <div>
     <el-container>
       <div class="blog-width-full">
-        <v-header></v-header>
+        <v-header :is-admin = isAdmin></v-header>
       </div>
       <el-container class="blog-wrapper">
         <el-aside width="150px">
@@ -16,6 +16,20 @@
               </el-form-item>
             </el-form>
             <vue-html5-editor :content="content" :height="500"></vue-html5-editor>
+            <hr>
+            <vue-markdown>
+                ### Solar System Exploration, 1950s – 1960s
+
+                - [ ] Mercury
+                - [x] Venus
+                - [x] Earth (Orbit/Moon)
+                - [x] Mars
+                - [ ] Jupiter
+                - [ ] Saturn
+                - [ ] Uranus
+                - [ ] Neptune
+                - [ ] Comet Haley
+            </vue-markdown>
             <p>文章分类：</p>
             <div>
               <el-checkbox-group 
@@ -50,7 +64,14 @@ import leftSide from '@/components/common-left';
 import rightSide from '@/components/common-right';
 import vMain from '@/components/common-main';
 import vFooter from '@/components/common-footer';
+
+// h5 富文本编辑器
 import VueHtml5Editor from 'vue-html5-editor'
+
+// markdown 编辑器
+import VueMarkdown from 'vue-markdown'
+
+
 Vue.use(VueHtml5Editor, {
   // 全局组件名称，使用new VueHtml5Editor(options)时该选项无效  
   // global component name 
@@ -193,7 +214,8 @@ export default {
     leftSide,
     rightSide,
     vMain,
-    vFooter
+    vFooter,
+    VueMarkdown
   },
   data () {
     return {
@@ -205,7 +227,8 @@ export default {
       checkedcatagories: ['js', 'reactjs'],
       catagories: ['js', 'css', 'html', 'vuejs', 'reactjs'],
       showCat: false,
-      showInput: false
+      showInput: false,
+      isAdmin: true
     };
   },
   methods: {

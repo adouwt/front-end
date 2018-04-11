@@ -146,8 +146,9 @@ export default {
         if (valid) {
           alert('submit!');
           saveCookie('token', 'token msg');
+          saveCookie('isadmin', 'isadmin'); // 对这两个cookie 做加密修改，或者限制浏览器对cookie 的修改
           let nextUrl = localStorage.getItem('nexturl');
-          console.log(nextUrl);
+          // console.log(nextUrl);
           // this.$router.push({'path': nextUrl})
           location.href = '#' + nextUrl
         } else {

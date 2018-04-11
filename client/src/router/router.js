@@ -12,9 +12,10 @@ import article from '@/page/common-catagory-article'
 import articleList from '@/page/catagory-article-list'
 import wtAdmin from '@/page/admin'
 import errorPage from '@/page/error'
+import noAuthority from '@/page/no-authority'
 
 // import 登录权限组件
-import {isLogin} from '../utils/authService'
+import {isLogin, isAdmin} from '../utils/authService'
 
 Vue.use(Router)
 
@@ -69,13 +70,18 @@ const router = new Router({
       name: 'wtAdmin',
       component: wtAdmin,
       meta: {
-        requiresAuth: true
+        isAdmin: true
       }
     },
     {
       path: '/error',
       name: 'errorPage',
       component: errorPage
+    },
+    {
+      path: '/no-authority',
+      name: 'noAuthority',
+      component: noAuthority
     },
     {
       path: '*',
@@ -85,17 +91,22 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some((record) => { 
+  if (to.matched.some((record) => {  // 先判断进入这个路由
     if (record.meta.requiresAuth) {
       localStorage.setItem('nexturl', record.path);
     }
     return record.meta.requiresAuth 
     })
   ) { 
-    if (!isLogin()) {
+    if (!isLogin()) { // 在判断是否登录
       return next({path: '/login-regist'})
+    } 
+  } 
+  
+  if (to.matched.some(record => record.meta.isAdmin)) {
+    if (!isAdmin()) {
+      return next({path: '/no-authority'})
     }
-    next()
   }
   next()
 })

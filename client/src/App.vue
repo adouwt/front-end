@@ -5,25 +5,6 @@
 </template>
 
 <script>
-import router from '@/router/router.js';
-
-router.beforeEach((to, from, next) => {
-  // 模拟登陆状态
-  let isAdmin = true;
-  let hasAdminRouter = window.location.href.includes('/wtadmin')
-  if (hasAdminRouter && !isAdmin) {
-    if (to.path !== '/wtadmin') {
-      return next({path: '/wtadmin'});
-    } else {
-      next();
-    }
-  } else {
-    if (to.path === '/wtadmin') {
-      return next({path: '/'});
-    }
-    next();
-  }
-});
 
 export default {
   name: 'app',
@@ -39,12 +20,12 @@ export default {
   //   '$route': 'judegAdmin' // 路由变化重新调用方法 判断是否是admin
   // },
   methods: {
-    judegAdmin () {
-      let hasAdminRouter = window.location.href.includes('/wtadmin')
-      if (hasAdminRouter && !this.isadmin) {
-        router.push({ path: '/error' })
-      }
-    }
+    // judegAdmin () {
+    //   let hasAdminRouter = window.location.href.includes('/wtadmin')
+    //   if (hasAdminRouter && !this.isadmin) {
+    //     router.push({ path: '/error' })
+    //   }
+    // }
   }
 }
 </script>
@@ -91,6 +72,14 @@ a {
   color: #2c3e50;
   width: 100%;
   height: 100vh;
+  >div>.el-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    .blog-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+    } 
+  }
 }
 .el-aside {
   border-top: 2px solid #ddd;

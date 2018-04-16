@@ -4,13 +4,13 @@
 import * as types from './mutation_types'
 
 export default {
-  addViews ({commit}) {
-    commit([types.ADD_VIEWS])
+  addViews: ({commit}) => {
+    commit(types.ADD_VIEWS)
   },
-  clickTotal ({commit}) {
-    commit([types.CLICK_TOTAL])
+  clickTotal: ({commit}) => {
+    commit(types.CLICK_TOTAL)
   },
-  addBlog ({commit}) {
-    commit([types.ADD_BLOG])
+  addBlog: ({commit}) => {
+    commit(types.ADD_BLOG)
   }
 }

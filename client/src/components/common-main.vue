@@ -23,6 +23,8 @@
     <span>state中total：{{this.$store.state.total}}</span>
     <p>
       <button @click="totalAlise">点击增加total</button>
+      <button @click="addBlog">点击增加blogNumber</button>
+      <button @click="addViews">点击增加views</button>
     </p>
     <div v-for="item in 3" :key='item'>
       
@@ -97,8 +99,8 @@ export default {
     }
   },
   created () {
-    // this.$store.dispatch('addViews') // 直接通过store的方法 触发action, 改变 views 的值
-    this.blogAdd() // 通过mapActions 触发mutation 从而commit ，改变state的值gsg
+    this.$store.dispatch('addViews') // 直接通过store的方法 触发action, 改变 views 的值
+    this.addBlog() // 通过mapActions 触发mutation 从而commit ，改变state的值gsg
   },
   computed: {
     ...mapState({
@@ -110,11 +112,18 @@ export default {
   },
   methods: {
     ...mapMutations({
-      totalAlise: 'clickTotal' // clickTotal 是mutation 里的方法，totalAlise是重新定义的一个别名方法，本组件直接调用这个方法
+      totalAlise: 'CLICK_TOTAL' // CLICK_TOTAL 是mutation 里的方法，totalAlise是重新定义的一个别名方法，本组件直接调用这个方法
     }),
-    ...mapActions({
-      blogAdd: 'blogAdd' // blogAdd是定义的一个函数别名称，挂载在到this(vue)实例上，后面的一个blogAdd 才是actions里面函数方法名称
-    })
+    ...mapActions(
+      // {
+      //   addBlog: 'addBlog',
+      //   addViews: 'addViews'
+      // }
+      [
+        'addBlog',
+        'addViews'
+      ]
+    )
   }
 }
 </script>

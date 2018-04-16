@@ -28,6 +28,11 @@
             <el-menu-item index="3-1">散文</el-menu-item>
             <el-menu-item index="3-2">微信推广</el-menu-item>
           </el-submenu>
+          <el-menu-item index="5">
+            <router-link to="/travel-diary/2345">
+              旅游日记
+            </router-link>
+          </el-menu-item>
           <el-menu-item index="90" class="blog-header-login" v-if="!login">
             <el-button type="primary" round @click="blogLogin">登录/注册</el-button>
           </el-menu-item>

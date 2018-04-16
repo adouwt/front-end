@@ -11,6 +11,7 @@ import userCenter from '@/page/user-center'
 import article from '@/page/common-catagory-article'
 import articleList from '@/page/catagory-article-list'
 import wtAdmin from '@/page/admin'
+import travel from '@/page/travel'
 import errorPage from '@/page/error'
 import noAuthority from '@/page/no-authority'
 
@@ -46,6 +47,11 @@ const router = new Router({
       path: '/catagory-article/:articleId',
       name: 'article',
       component: article
+    },
+    {
+      path: '/travel-diary/:diaryId',
+      name: 'travel',
+      component: travel
     },
     {
       path: '/catagory-article-list/:catagoryId',

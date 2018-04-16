@@ -26,7 +26,7 @@
       <button @click="addBlog">点击增加blogNumber</button>
       <button @click="addViews">点击增加views</button>
     </p>
-    <div v-for="item in 3" :key='item'>
+    <div v-for="item in 2" :key='item'>
       
       <h3>二次开发 element-ui 主题你需要知道的东西</h3>
       <div class="blog-detials-small-msg">
@@ -81,6 +81,10 @@
           首先是安装工具：
         </h5>
       </div>
+
+      <div class="">
+        <edit-article></edit-article>
+      </div>
     </div>
   </div>
 </template>
@@ -90,9 +94,13 @@
 </style>
 
 <script>
+import editArticle from './edit-article'
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
+  components: {
+    'edit-article': editArticle
+  },
   data () {
     return {
       checked: true

@@ -6,6 +6,7 @@ import loginRegist from '@/page/login-regist'
 
 import blogDraft from '@/page/blog-draft'
 import blogNote from '@/page/blog-note'
+import blogNoteModify from '@/page/blog-note-modify'
 import userCenter from '@/page/user-center'
 
 import article from '@/page/common-catagory-article'
@@ -62,6 +63,14 @@ const router = new Router({
       path: '/blog-note',
       name: 'blogNote',
       component: blogNote,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/blog-note-modify/:articleId',
+      name: 'blogNoteModify',
+      component: blogNoteModify,
       meta: {
         requiresAuth: true
       }

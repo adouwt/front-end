@@ -12,9 +12,6 @@
           <el-main>
             <v-main></v-main>
           </el-main>
-          <el-footer>
-            <v-footer></v-footer>
-          </el-footer>
         </el-container>
       </el-container>
     </el-container>

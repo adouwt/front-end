@@ -207,9 +207,9 @@ export default {
   },
   data () {
     return {
-      content: '123',
+      content: '',
       blog: {
-        title: 'js 入门知识',
+        title: '',
         addOtherCat: ''
       },
       checkedcatagories: ['js', 'reactjs'],
@@ -218,6 +218,10 @@ export default {
       showInput: false,
       isAdmin: true
     };
+  },
+  created () {
+    this.blog.title = '这个文章修改的文章标题';
+    this.content = '这个是文章修改的文章内容'
   },
   methods: {
     addCat () {

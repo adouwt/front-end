@@ -106,8 +106,8 @@ export default {
     .nba-activity-rank {
       box-sizing: border-box;
       width: 88%;
-      margin-left: 20px;
-      margin-right: 20px;
+      margin-left: auto;
+      margin-right: auto;
       div {
         padding: 20px 21px;
         border-radius: 10px;

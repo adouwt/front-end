@@ -97,8 +97,8 @@ export default {
         box-sizing: border-box;
         width: 88%;
         margin-top: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: auto;
+        margin-right: auto;
         padding: 20px 21px;
         border-radius: 10px;
         background-color: #fdf1e3;

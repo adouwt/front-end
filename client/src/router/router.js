@@ -16,6 +16,11 @@ import travel from '@/page/travel'
 import errorPage from '@/page/error'
 import noAuthority from '@/page/no-authority'
 
+
+import nbaActivity from '@/page/nba/nba-activity-index'
+import nbaActivityRule from '@/page/nba/nba-activity-rule'
+import nbaActivityRank from '@/page/nba/nba-activity-rank'
+
 // import 登录权限组件
 import {isLogin, isAdmin} from '../utils/authService'
 
@@ -94,10 +99,27 @@ const router = new Router({
       component: errorPage
     },
     {
-      path: '/no-authority',
+      path: '/nba-authority',
       name: 'noAuthority',
       component: noAuthority
     },
+
+    {
+      path: '/nba-activity',
+      name: 'nbaActivity',
+      component: nbaActivity
+    },
+    {
+      path: '/nba-activity-rule',
+      name: 'nbaActivityRule',
+      component: nbaActivityRule
+    },
+    {
+      path: '/nba-activity-rank',
+      name: 'nbaActivityRank',
+      component: nbaActivityRank
+    },
+
     {
       path: '*',
       redirect: '/error'

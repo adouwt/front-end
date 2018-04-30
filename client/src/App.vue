@@ -37,7 +37,7 @@ html{
 }
 body {
   font-size: 1.4rem;
-  overflow: hidden;
+  // overflow: hidden;
   margin: 0;
 }
 .text-center {

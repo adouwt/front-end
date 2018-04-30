@@ -107,14 +107,16 @@ export default {
     signout () {
       removeCookie('token');
       removeCookie('isadmin');
+      alert(1234)
+      alert(router)
       router.push({ path: '/index' })
     }
   }
 }
 </script>
 
-<style lang="less" scoped>
-  .blog-header-login {
+<style lang="less">
+  ul.el-menu-demo>li.blog-header-login {
     float: right;
   }
   .blog-logo {

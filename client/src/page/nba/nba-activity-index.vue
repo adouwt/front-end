@@ -1,29 +1,31 @@
 <template>
   <div class="nba-bg-wrapper">
     <nba-common></nba-common>
-    <div class='nba-btn-area'>
-      <div class='nba-btn'>
-        <router-link to="/nba-activity-rule">活动规则</router-link>
-        <router-link to="/nba-activity-rank">竞猜排名</router-link>
+    <div class="nba-bg-complementary">
+      <div class='nba-btn-area'>
+        <div class='nba-btn'>
+          <router-link to="/nba-activity-rule">活动规则</router-link>
+          <router-link to="/nba-activity-rank">竞猜排名</router-link>
+        </div>
       </div>
-    </div>
-    <div class='nba-rule-area'>
-      <p class="nba-activity-time">活动开始时间：2018年5月X日</p>
-      <p class="nba-activity-explain">
-        活动期间，购买您预测赢队的产品，比赛结束后，若该队胜出，您将会获得红包奖励；
-        参赛条件：购买指定产品且单笔起投金额≥20000元；可多次参与活动；
-      </p>
-      <p class="nba-activity-gift">
-        活动期间，猜中场数最多的用户将有机会获得终极大奖—NBA中国赛现场门票（或等值礼品）；
-      </p>
-      <p class="nab-activity-danger">
-        注：详细规则请<span class="nba-go-to-rule">前往【活动规则】查看</span> 
-      </p>
-    </div>
-    <div class="nba-activity-index-power">
-      <p class="text-center">
-        以平台发布的规则为准
-      </p>
+      <div class='nba-rule-area'>
+        <p class="nba-activity-time">活动开始时间：2018年5月X日</p>
+        <p class="nba-activity-explain">
+          活动期间，购买您预测赢队的产品，比赛结束后，若该队胜出，您将会获得红包奖励；
+          参赛条件：购买指定产品且单笔起投金额≥20000元；可多次参与活动；
+        </p>
+        <p class="nba-activity-gift">
+          活动期间，猜中场数最多的用户将有机会获得终极大奖—NBA中国赛现场门票（或等值礼品）；
+        </p>
+        <p class="nab-activity-danger">
+          注：详细规则请<span class="nba-go-to-rule">前往【活动规则】查看</span> 
+        </p>
+      </div>
+      <div class="nba-activity-index-power">
+        <p class="text-center">
+          以平台发布的规则为准
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -47,7 +49,7 @@ export default {
 </script>
 
 <style lang='less' >
-  body {
+  .nba-bg-complementary {
     background-color: #332f86;
   }
   .nba-bg-wrapper {
@@ -133,8 +135,8 @@ export default {
       }
     }
     .nba-activity-index-power {
-      margin-top: 20px;
-      margin-bottom: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
       text-align: center;
       color: #fff;
       font-size: 13px;

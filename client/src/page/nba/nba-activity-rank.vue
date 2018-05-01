@@ -1,69 +1,71 @@
 <template>
   <div class="nba-bg-wrapper">
     <nba-common></nba-common>
-    <div v-if="isActive" class="nba-activity-rank">
-      <div class="nba-activity-rank-user">
+    <div class="nba-bg-complementary">
+      <div v-if="isActive" class="nba-activity-rank">
+        <div class="nba-activity-rank-user">
+          <p>
+            <span class="nba-common-highlight">本期竞猜获奖情况：</span> <span>您未参加哦</span>
+          </p>
+          <p>
+            <span class="nba-common-highlight">您当前排名：</span><span>您尚未参见活动。快去参加活动赢大奖吧！</span>
+          </p>
+        </div>
+        <div class="nba-activity-rank-award-users">
+          <p>
+            <span class="nba-common-highlight">本期竞猜获奖用户</span>
+          </p>
+          <p>
+            <span class="nba-activity-award-user">185****77735</span>
+            <span class="nba-activity-award-user">185****77735</span>
+            <span class="nba-activity-award-user">185****77735</span>
+            <span class="nba-activity-award-user">185****77735</span>
+            <span class="nba-activity-award-user">185****77735</span>
+            <span class="nba-activity-award-user">185****77735</span>
+            <span class="nba-activity-award-user">185****77735</span>
+            <span class="nba-activity-award-user">185****77735</span>
+            <span class="nba-activity-award-user">185****77735</span>
+            <span class="nba-activity-award-user">185****77735</span>
+          </p>
+        </div>
+        <div class="nba-activity-rank-current-user">
+          <p>
+            <span class="nba-common-highlight">当前排名情况：</span>
+          </p>
+          <p>
+            <span class="nba-activity-rank-user">185****77735</span>
+            <span>第1名，猜中N次，累计投资30万</span>
+          </p>
+          <p>
+            <span class="nba-activity-rank-user">185****77735</span>
+            <span>第1名，猜中N次，累计投资30万</span>
+          </p>
+          <p>
+            <span class="nba-activity-rank-user">185****77735</span>
+            <span>第1名，猜中N次，累计投资30万</span>
+          </p>
+          <p>
+            <span class="nba-activity-rank-user">185****77735</span>
+            <span>第1名，猜中N次，累计投资30万</span>
+          </p>
+          <p>
+            <span class="nba-activity-rank-user">185****77735</span>
+            <span>第1名，猜中N次，累计投资30万</span>
+          </p>
+          <p>
+            <span class="nba-activity-rank-user">185****77735</span>
+            <span>第1名，猜中N次，累计投资30万</span>
+          </p>
+        </div>
+      </div>
+      <div v-else class="nba-activity-no-start">
+        <h3>活动尚未开始哦</h3>
+      </div>
+      <div class="nba-activity-rank-remarks" :class="{isNoStart:!isActive}">
         <p>
-          <span class="nba-common-highlight">本期竞猜获奖情况：</span> <span>您未参加哦</span>
-        </p>
-        <p>
-          <span class="nba-common-highlight">您当前排名：</span><span>您尚未参见活动。快去参加活动赢大奖吧！</span>
+          每场竞猜结束后1-2个工作日公布竞猜获奖用户名单、参赛用户当前排名情况
         </p>
       </div>
-      <div class="nba-activity-rank-award-users">
-        <p>
-          <span class="nba-common-highlight">本期竞猜获奖用户</span>
-        </p>
-        <p>
-          <span class="nba-activity-award-user">185****77735</span>
-          <span class="nba-activity-award-user">185****77735</span>
-          <span class="nba-activity-award-user">185****77735</span>
-          <span class="nba-activity-award-user">185****77735</span>
-          <span class="nba-activity-award-user">185****77735</span>
-          <span class="nba-activity-award-user">185****77735</span>
-          <span class="nba-activity-award-user">185****77735</span>
-          <span class="nba-activity-award-user">185****77735</span>
-          <span class="nba-activity-award-user">185****77735</span>
-          <span class="nba-activity-award-user">185****77735</span>
-        </p>
-      </div>
-      <div class="nba-activity-rank-current-user">
-        <p>
-          <span class="nba-common-highlight">当前排名情况：</span>
-        </p>
-        <p>
-          <span class="nba-activity-rank-user">185****77735</span>
-          <span>第1名，猜中N次，累计投资30万</span>
-        </p>
-        <p>
-          <span class="nba-activity-rank-user">185****77735</span>
-          <span>第1名，猜中N次，累计投资30万</span>
-        </p>
-        <p>
-          <span class="nba-activity-rank-user">185****77735</span>
-          <span>第1名，猜中N次，累计投资30万</span>
-        </p>
-        <p>
-          <span class="nba-activity-rank-user">185****77735</span>
-          <span>第1名，猜中N次，累计投资30万</span>
-        </p>
-        <p>
-          <span class="nba-activity-rank-user">185****77735</span>
-          <span>第1名，猜中N次，累计投资30万</span>
-        </p>
-        <p>
-          <span class="nba-activity-rank-user">185****77735</span>
-          <span>第1名，猜中N次，累计投资30万</span>
-        </p>
-      </div>
-    </div>
-    <div v-else class="nba-activity-no-start">
-      <h3>活动尚未开始哦</h3>
-    </div>
-    <div class="nba-activity-rank-remarks" :class="{isNoStart:!isActive}">
-      <p>
-        每场竞猜结束后1-2个工作日公布竞猜获奖用户名单、参赛用户当前排名情况
-      </p>
     </div>
   </div>
 </template>
@@ -88,7 +90,7 @@ export default {
 </script>
 
 <style lang='less' >
-  body {
+  .nba-bg-complementary {
     background-color: #332f86;
   }
   .nba-bg-wrapper {
@@ -147,8 +149,8 @@ export default {
         margin-left: auto;
         margin-right: auto;
         line-height: 20px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
         text-align: center;
         color: #fff;
         font-size: 13px;

@@ -6,26 +6,27 @@
         185****7735
       </span>
     </div>
-    <div class="nba-login-wrapper" @touchmove.prevent>
-      <div class="nba-login-authorition" v-show="!isLogin">
-        <div class="nba-login-status">您当前尚未登录，请先登录</div>
-        <div class="nba-login-btn">
-          <router-link to='/login'>
-            去登录
-          </router-link>
+    <transition name="fade">
+      <div class="nba-login-wrapper" @touchmove.prevent  v-show="!isLogin">
+        <div class="nba-login-authorition">
+          <div class="nba-login-status">您当前尚未登录，请先登录</div>
+          <div class="nba-login-btn">
+            <router-link to='/login'>
+              去登录
+            </router-link>
+          </div>
+          <div class="nba-regist-btn">
+            尚未账号，
+            <router-link to='/login'>
+              去注册
+            </router-link>
+          </div>
         </div>
-        <div class="nba-regist-btn">
-          尚未账号，
-          <router-link to='/login'>
-            去注册
-          </router-link>
+        <div class="nba-login-close-wrapper">
+          <span class="nba-login-close" @click="closeModel">X</span>
         </div>
       </div>
-      <div class="nba-login-close-wrapper">
-        <span class="nba-login-close">X</span>
-      </div>
-    </div>
-    
+    </transition>
   </div>
 </template>
 
@@ -47,6 +48,11 @@ export default {
     //     login()
     //   })
     // }
+  },
+  methods: {
+    closeModel () {
+      this.isLogin = true
+    }
   }
 }
 </script>
@@ -133,5 +139,10 @@ export default {
     }
 		
   }
- 
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
 </style>

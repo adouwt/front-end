@@ -28,17 +28,18 @@
             <span class="nba-activity-award-user">185****77735</span>
           </p>
         </div>
-        <div class="nba-activity-rank-current-user">
+        <div class="nba-activity-rank-current-user" >
           <p>
             <span class="nba-common-highlight">当前排名情况：</span>
           </p>
-          <div class="nba-activity-rank-user-scroll-wrapper">
-            <div :style="{transform: 'translateY(-'+noticePosition+'px) translateZ(0px)'}" class="nba-activity-rank-user-scroll">
+          <div class="nba-activity-rank-user-scroll-wrapper" id="box">
+            <div class="nba-activity-rank-user-scroll" id="con1">
               <p v-for='(i, index) in notices'>
                 <span class="nba-activity-rank-user">185****77735</span>
                 <span>第{{index+1}}名，猜中N次，累计投资30万</span>
               </p>
             </div>
+            <div id="con2"></div>
           </div>
         </div>
       </div>
@@ -63,55 +64,31 @@ export default {
     return {
       isActive: true, 
       noticePosition: 0,
-      notices: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      notices: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      speed: 30
     }
   },
   components: {
     nbaCommon
   },
-  created () {
-    let destination = 30
+  computed () {
     setInterval(() => {
-      if (destination / 30 < this.notices.length) {
-        this.move(destination, 500)
-        destination += 30
-      } else { // 列表到底
-        this.noticePosition = 0 // 设置列表为开始位置
-        destination = 30
-        this.move(destination, 500)
-        destination += 30
+      let box = document.getElementById('box');
+      let con1 = document.getElementById('con1');
+      let con2 = document.getElementById('con2');
+      con2.innerHTML = con1.innerHTML;
+      if (box.scrollTop >= con1.scrollHeight) {
+        box.scrollTop = 0;
+      } else {
+        box.scrollTop++;
       }
-    }, 500)
+    }, 
+    this.speed); 
   },
   mounted () {
     // iframe('NBA赛事竞猜活动规则')
   },
   methods: {
-    move (destination, duration) { // 实现滚动动画
-    let speed = ((destination - this.noticePosition) * 1000) / (duration * 10)
-      let count = 0
-      let step = () => {
-        this.noticePosition += speed
-        count++
-        // console.log(this.noticePosition)
-        this.rAF(() => {
-          if (this.noticePosition < destination) {
-            step()
-          } else {
-            this.noticePosition = destination
-          }
-        })
-      }
-      step()
-    },
-    rAF () {
-      window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      function (callback) { window.setTimeout(callback, 1000 / 60) }
-    }
   }
 }
 </script>
@@ -137,7 +114,7 @@ export default {
       width: 88%;
       margin-left: auto;
       margin-right: auto;
-      div {
+      >div {
         padding: 20px 21px;
         border-radius: 10px;
         background-color: #fdf1e3;
@@ -169,8 +146,10 @@ export default {
           margin-top:20px;
           max-height: 740px;
           overflow: hidden;
+          padding-left: 0;
+          padding-right: 0;
           .nba-activity-rank-user-scroll {
-            transition: all 0.5s;
+
           }
         }
       }

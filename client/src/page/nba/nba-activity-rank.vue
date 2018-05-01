@@ -32,30 +32,14 @@
           <p>
             <span class="nba-common-highlight">当前排名情况：</span>
           </p>
-          <p>
-            <span class="nba-activity-rank-user">185****77735</span>
-            <span>第1名，猜中N次，累计投资30万</span>
-          </p>
-          <p>
-            <span class="nba-activity-rank-user">185****77735</span>
-            <span>第1名，猜中N次，累计投资30万</span>
-          </p>
-          <p>
-            <span class="nba-activity-rank-user">185****77735</span>
-            <span>第1名，猜中N次，累计投资30万</span>
-          </p>
-          <p>
-            <span class="nba-activity-rank-user">185****77735</span>
-            <span>第1名，猜中N次，累计投资30万</span>
-          </p>
-          <p>
-            <span class="nba-activity-rank-user">185****77735</span>
-            <span>第1名，猜中N次，累计投资30万</span>
-          </p>
-          <p>
-            <span class="nba-activity-rank-user">185****77735</span>
-            <span>第1名，猜中N次，累计投资30万</span>
-          </p>
+          <div class="nba-activity-rank-user-scroll-wrapper">
+            <div :style="{transform: 'translateY(-'+noticePosition+'px) translateZ(0px)'}" class="nba-activity-rank-user-scroll">
+              <p v-for='(i, index) in notices'>
+                <span class="nba-activity-rank-user">185****77735</span>
+                <span>第{{index+1}}名，猜中N次，累计投资30万</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <div v-else class="nba-activity-no-start">
@@ -77,14 +61,57 @@ import nbaCommon from './nba-activity-common'
 export default {
   data () {
     return {
-      isActive: true
+      isActive: true, 
+      noticePosition: 0,
+      notices: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     }
   },
   components: {
     nbaCommon
   },
+  created () {
+    let destination = 30
+    setInterval(() => {
+      if (destination / 30 < this.notices.length) {
+        this.move(destination, 500)
+        destination += 30
+      } else { // 列表到底
+        this.noticePosition = 0 // 设置列表为开始位置
+        destination = 30
+        this.move(destination, 500)
+        destination += 30
+      }
+    }, 500)
+  },
   mounted () {
     // iframe('NBA赛事竞猜活动规则')
+  },
+  methods: {
+    move (destination, duration) { // 实现滚动动画
+    let speed = ((destination - this.noticePosition) * 1000) / (duration * 10)
+      let count = 0
+      let step = () => {
+        this.noticePosition += speed
+        count++
+        // console.log(this.noticePosition)
+        this.rAF(() => {
+          if (this.noticePosition < destination) {
+            step()
+          } else {
+            this.noticePosition = destination
+          }
+        })
+      }
+      step()
+    },
+    rAF () {
+      window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      function (callback) { window.setTimeout(callback, 1000 / 60) }
+    }
   }
 }
 </script>
@@ -129,13 +156,21 @@ export default {
         }
       }
       .nba-activity-rank-current-user {
-        margin-top:20px;
+        margin-top: 20px;
         p {
           font-size: 13px;
           .nba-activity-rank-user {
             display: inline-block;
             line-height: 30px;
             margin-right: 10px;
+          }
+        }
+        .nba-activity-rank-user-scroll-wrapper {
+          margin-top:20px;
+          max-height: 740px;
+          overflow: hidden;
+          .nba-activity-rank-user-scroll {
+            transition: all 0.5s;
           }
         }
       }

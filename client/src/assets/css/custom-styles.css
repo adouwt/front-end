@@ -2,3 +2,7 @@
 .el-menu--horizontal>.el-menu-item.blog-logo.is-active {
     border-bottom: 2px solid transparent;
 }
+
+p {
+    margin: 0;
+}

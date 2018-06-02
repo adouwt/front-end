@@ -18,10 +18,10 @@
                 </el-carousel-item>
               </el-carousel>
             </div>      
-            <blog-list></blog-list>     
+            <blog-list></blog-list>  
           </el-main>
         </el-container>
-        <el-aside width="300px">
+        <el-aside width="25%">
           <right-side></right-side>
         </el-aside>
       </el-container>
